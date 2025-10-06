@@ -13,7 +13,6 @@ const Sample: React.FC = () => {
                 <p className="text-gray-600 dark:text-gray-400">Trang demo import component từ thư viện dùng chung (cập nhật xác nhận hiển thị).</p>
             </header>
 
-{/* Lêu lêu */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                     <Label htmlFor="name">Name</Label>
