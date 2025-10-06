@@ -5,7 +5,12 @@ import { Label } from '@pvn/formkit';
 import { Select } from '@pvn/formkit';
 import { Textarea } from '@pvn/formkit';
 
-const App: React.FC = () => {
+import Form from './modules/module_form/components/Form';
+import Data from './modules/module_data/components/Data';
+
+type Page = 'showcase' | 'form' | 'data';
+
+const Showcase: React.FC = () => {
     const [formData, setFormData] = useState({
         name: 'Jane Doe',
         email: 'jane.doe@example.com',
@@ -35,13 +40,11 @@ const App: React.FC = () => {
     };
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex items-center justify-center p-4 font-sans">
-      <div className="w-full max-w-2xl mx-auto">
-        <header className="text-center mb-10">
+    <>
+       <header className="text-center mb-10">
             <h1 className="text-4xl font-bold text-gray-800 dark:text-white tracking-tight">FormKit UI Showcase</h1>
             <p className="text-lg text-gray-600 dark:text-gray-400 mt-2">A demonstration of a beautiful and reusable form component library.</p>
         </header>
-
         <main className="bg-white dark:bg-gray-800/50 rounded-lg shadow-2xl p-8 backdrop-blur-sm border border-gray-200 dark:border-gray-700">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -106,6 +109,44 @@ const App: React.FC = () => {
             </div>
           </form>
         </main>
+    </>
+  );
+}
+
+
+const App: React.FC = () => {
+    const [page, setPage] = useState<Page>('showcase');
+
+    const renderPage = () => {
+        switch (page) {
+            case 'form':
+                return <Form />;
+            case 'data':
+                return <Data />;
+            case 'showcase':
+            default:
+                return <Showcase />;
+        }
+    }
+
+    const NavButton: React.FC<{ pageName: Page; children: React.ReactNode }> = ({ pageName, children }) => (
+        <Button
+            variant={page === pageName ? 'primary' : 'ghost'}
+            onClick={() => setPage(pageName)}
+        >
+            {children}
+        </Button>
+    );
+
+  return (
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col items-center p-4 font-sans">
+      <div className="w-full max-w-2xl mx-auto">
+        <nav className="mb-8 p-2 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-md border border-gray-200 dark:border-gray-700 flex items-center justify-center gap-2">
+            <NavButton pageName="showcase">Showcase</NavButton>
+            <NavButton pageName="form">Contact Form</NavButton>
+            <NavButton pageName="data">Data Form</NavButton>
+        </nav>
+        {renderPage()}
       </div>
     </div>
   );
