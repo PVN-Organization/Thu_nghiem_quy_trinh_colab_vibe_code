@@ -5,6 +5,13 @@ import { Label } from '@pvn/formkit';
 import { Select } from '@pvn/formkit';
 import { Textarea } from '@pvn/formkit';
 
+import Form from './modules/module_form/components/Form';
+import Data from './modules/module_data/components/Data';
+import Sample from './modules/module_sample/components/Sample';
+
+type Page = 'showcase' | 'form' | 'data' | 'sample';
+
+const Showcase: React.FC = () => {
 const App: React.FC = () => {
     const [formData, setFormData] = useState({
         name: 'Jane Doe',
@@ -106,6 +113,47 @@ const App: React.FC = () => {
             </div>
           </form>
         </main>
+    </>
+  );
+}
+
+
+const App: React.FC = () => {
+    const [page, setPage] = useState<Page>('showcase');
+
+    const renderPage = () => {
+        switch (page) {
+            case 'form':
+                return <Form />;
+            case 'data':
+                return <Data />;
+            case 'sample':
+                return <Sample />;
+            case 'showcase':
+            default:
+                return <Showcase />;
+        }
+    }
+
+    const NavButton: React.FC<{ pageName: Page; children: React.ReactNode }> = ({ pageName, children }) => (
+        <Button
+            variant={page === pageName ? 'primary' : 'ghost'}
+            onClick={() => setPage(pageName)}
+        >
+            {children}
+        </Button>
+    );
+
+  return (
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col items-center p-4 font-sans">
+      <div className="w-full max-w-2xl mx-auto">
+        <nav className="mb-8 p-2 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-md border border-gray-200 dark:border-gray-700 flex items-center justify-center gap-2">
+            <NavButton pageName="showcase">Showcase</NavButton>
+            <NavButton pageName="form">Contact Form</NavButton>
+            <NavButton pageName="data">Data Form</NavButton>
+            <NavButton pageName="sample">Sample</NavButton>
+        </nav>
+        {renderPage()}
       </div>
     </div>
   );
