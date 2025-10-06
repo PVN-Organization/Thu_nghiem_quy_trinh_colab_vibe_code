@@ -12,6 +12,7 @@ import Sample from './modules/module_sample/components/Sample';
 type Page = 'showcase' | 'form' | 'data' | 'sample';
 
 const Showcase: React.FC = () => {
+const App: React.FC = () => {
     const [formData, setFormData] = useState({
         name: 'Jane Doe',
         email: 'jane.doe@example.com',
@@ -41,11 +42,13 @@ const Showcase: React.FC = () => {
     };
 
   return (
-    <>
-       <header className="text-center mb-10">
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex items-center justify-center p-4 font-sans">
+      <div className="w-full max-w-2xl mx-auto">
+        <header className="text-center mb-10">
             <h1 className="text-4xl font-bold text-gray-800 dark:text-white tracking-tight">FormKit UI Showcase</h1>
             <p className="text-lg text-gray-600 dark:text-gray-400 mt-2">A demonstration of a beautiful and reusable form component library.</p>
         </header>
+
         <main className="bg-white dark:bg-gray-800/50 rounded-lg shadow-2xl p-8 backdrop-blur-sm border border-gray-200 dark:border-gray-700">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
