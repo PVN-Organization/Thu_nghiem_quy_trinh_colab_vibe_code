@@ -7,8 +7,9 @@ import { Textarea } from '@pvn/formkit';
 
 import Form from './modules/module_form/components/Form';
 import Data from './modules/module_data/components/Data';
+import Sample from './modules/module_sample/components/Sample';
 
-type Page = 'showcase' | 'form' | 'data';
+type Page = 'showcase' | 'form' | 'data' | 'sample';
 
 const Showcase: React.FC = () => {
     const [formData, setFormData] = useState({
@@ -123,6 +124,8 @@ const App: React.FC = () => {
                 return <Form />;
             case 'data':
                 return <Data />;
+            case 'sample':
+                return <Sample />;
             case 'showcase':
             default:
                 return <Showcase />;
@@ -145,6 +148,7 @@ const App: React.FC = () => {
             <NavButton pageName="showcase">Showcase</NavButton>
             <NavButton pageName="form">Contact Form</NavButton>
             <NavButton pageName="data">Data Form</NavButton>
+            <NavButton pageName="sample">Sample</NavButton>
         </nav>
         {renderPage()}
       </div>
