@@ -9,8 +9,8 @@ const Sample: React.FC = () => {
     return (
         <div className="space-y-6">
             <header className="text-center mb-2">
-                <h2 className="text-2xl font-bold">Sample Page</h2>
-                <p className="text-gray-600 dark:text-gray-400">Trang demo import component từ thư viện dùng chung.</p>
+                <h2 className="text-2xl font-bold">Sample Page - Demo liên kết @pvn/formkit</h2>
+                <p className="text-gray-600 dark:text-gray-400">Trang demo import component từ thư viện dùng chung (cập nhật xác nhận hiển thị).</p>
             </header>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
