@@ -9,8 +9,12 @@ import Form from './modules/module_form/components/Form';
 import Data from './modules/module_data/components/Data';
 import Dashboard from './modules/module_dashboard/components/Dashboard';
 import Login from './modules/module_login/components/Login';   
+// Add the following import
+// import Page1 from './modules/module_page1/components/Page1';
 
-type Page = 'showcase' | 'form' | 'data' | 'dashboard' | 'login'; 
+type Page = 'showcase' | 'form' | 'data' | 'dashboard' | 'login'; // remove this line
+// Add 'page1' to the type
+// type Page = 'showcase' | 'form' | 'data' | 'dashboard' | 'login' | 'page1';
 
 const Showcase: React.FC = () => {
     const [formData, setFormData] = useState({
@@ -129,6 +133,9 @@ const App: React.FC = () => {
                 return <Dashboard />;
             case 'login':
                 return <Login />; 
+            // Add the following case
+            // case 'page1':
+            //     return <Page1 />;
             case 'showcase':
             default:
                 return <Showcase />;
@@ -153,6 +160,8 @@ const App: React.FC = () => {
             <NavButton pageName="data">Data Form</NavButton>
             <NavButton pageName="dashboard">Dashboard</NavButton>
             <NavButton pageName="login">Login</NavButton>
+            {/* Add the following button */}
+            {/* <NavButton pageName="page1">Page 1</NavButton> */}
         </nav>
         {renderPage()}
       </div>
