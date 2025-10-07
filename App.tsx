@@ -8,10 +8,9 @@ import { Textarea } from '@pvn/formkit';
 import Form from './modules/module_form/components/Form';
 import Data from './modules/module_data/components/Data';
 import Dashboard from './modules/module_dashboard/components/Dashboard';
-// import Login from './modules/module_login/components/Login';   //uncomment
+import Login from './modules/module_login/components/Login';   
 
-type Page = 'showcase' | 'form' | 'data' | 'dashboard'; //thay dòng này thành dòng dưới
-// type Page = 'showcase' | 'form' | 'data' | 'dashboard' | 'login'; //uncomment
+type Page = 'showcase' | 'form' | 'data' | 'dashboard' | 'login'; 
 
 const Showcase: React.FC = () => {
     const [formData, setFormData] = useState({
@@ -128,8 +127,8 @@ const App: React.FC = () => {
                 return <Data />;
             case 'dashboard':
                 return <Dashboard />;
-            // case 'login':
-            //     return <Login />; //uncomment
+            case 'login':
+                return <Login />; 
             case 'showcase':
             default:
                 return <Showcase />;
@@ -153,7 +152,7 @@ const App: React.FC = () => {
             <NavButton pageName="form">Contact Form</NavButton>
             <NavButton pageName="data">Data Form</NavButton>
             <NavButton pageName="dashboard">Dashboard</NavButton>
-            {/* <NavButton pageName="login">Login</NavButton> */} {/*uncomment*/}
+            <NavButton pageName="login">Login</NavButton>
         </nav>
         {renderPage()}
       </div>
